@@ -27,8 +27,6 @@ class CNNModel(nn.Module):
 class GramMatrix(nn.Module):
 	def forward(self, input):
 		a, b, c = input.size()  # a=batch size(=1)
-        # b: number of feature maps
-        # (c, d): dimensions of a f. map (N=c*d)
 		features = input.view(a * b, c)  # resise F_XL into \hat F_XL
 		G = mm(features, features.t())  # compute the gram product
         # 'normalize' the values of the gram matrix by dividing by the number of elements in each feature maps

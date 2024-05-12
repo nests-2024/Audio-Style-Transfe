@@ -8,8 +8,8 @@ import torch.optim as optim
 
 from NeuralStyleTransfer import GramMatrix, StyleLoss
 
-def read_audio_spectum(filename, duration=16, n_fft=2048):
-    x, fs = librosa.load(filename, duration=duration)
+def read_audio_spectum(filename, duration=16, n_fft=2048, sr=22050):
+    x, fs = librosa.load(filename, duration=duration, sr=sr)
     S = librosa.stft(x, n_fft=n_fft)
     S = np.log1p(np.abs(S))  
     return S, fs
